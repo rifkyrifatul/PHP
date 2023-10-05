@@ -1,0 +1,26 @@
+QUERY DATABASE
+
+//melihat seluruh database
+SHOW DATABASES;
+
+//membuat DATABASE baru
+CREATE DATABASE db_pegawai;
+
+//menggunakan database
+use db_pegawai;
+
+//membuat table pegawai
+CREATE TABLE pegawai( 
+    id int PRIMARY key AUTO_INCREMENT, 
+    nip char(5) not null UNIQUE, 
+    nama varchar (30) NOT null, 
+    gender ENUM ('L', 'P') NOT null, 
+    umur int (10) not null, 
+    berat_badan float (10) 
+    );
+
+//melihat seluruh database
+SHOW DATABASES;
+
+//melihat descripsi table
+DESC pegawai;
