@@ -1,0 +1,52 @@
+//Membuat table produk
+CREATE TABLE produk( 
+id int PRIMARY KEY AUTO_INCREMENT, 
+nama varchar (30) NOT null UNIQUE, 
+harga double NOT null, stok int not null,
+idjenis int not null REFERENCES jenis (id), 
+foto varchar (30)
+);
+
+//input table produk
+INSERT INTO produk (nama, harga, stok, idjenis, foto) 
+VALUES ('nasi goreng', 20000,10,3,'nasi'), 
+('coca cola', 3000,20,4,'cola'), 
+('kursi', 400000,20,2,'kursi'), 
+('handphone', 500000,10,1,'hp'), 
+('sprite', 4000,4,4,'sprite'
+);
+
+//Membuat table pembelian
+CREATE TABLE pembelian( id int PRIMARY KEY AUTO_INCREMENT, 
+tanggal date, 
+nomor int (30) not null UNIQUE, 
+produk_id int null REFERENCES produk (id), 
+jumlah int (50), harga int (50), 
+vendor_id varchar (50) 
+);
+
+//Insert table pembelian
+INSERT INTO `pembelian` (`id`, `tanggal`, `nomor`, `produk_id`, `jumlah`, `harga`, `vendor_id`) 
+VALUES (NULL, '2023-10-03', '30', '2', '10', '5000', '1'), 
+(NULL, '2023-10-04', '20', '1', '60', '6000', '2'), 
+(NULL, '2023-10-05', '10', '3', '20', '7000', '3'), 
+(NULL, '2023-10-06', '15', '4', '6', '11000', '4'), 
+(NULL, '2023-10-07', '80', '5', '25', '9000', '5'
+);
+
+//membuat table vendor_id
+CREATE TABLE vendor( id int PRIMARY KEY REFERENCES pembelian (vendor_id), 
+nomor int (30) NOT null UNIQUE, 
+nama varchar (30) not null UNIQUE, 
+kota varchar (30) not null, 
+kontak int (30) not null UNIQUE 
+);
+
+//input table vandor
+INSERT INTO `vendor` (`id`, `nomor`, `nama`, `kota`, `kontak`) 
+VALUES ('1', '10', 'Andi', 'Garut', '111222333'), 
+('2', '20', 'Budi', 'Bandung', '1122244'), 
+('3', '80', 'caca', 'banjar', '112255'), 
+('4', '30', 'Dedi', 'sukabumi', '112266'), 
+('5', '6', 'erik', 'jakarta', '112277'
+);
